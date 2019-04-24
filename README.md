@@ -27,7 +27,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|STRING|null: false, add_index|
+|name|STRING|null: false|
 
 ### Association
 - has_many :groups, through: :members
@@ -39,7 +39,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|STRING|null: false, add_index|
+|group_name|STRING|null: false|
 
 ### Association
 - has_many :users, through: :members

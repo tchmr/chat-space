@@ -1,7 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
   body {
     height: 100%;
+    a {
+      text-decoration: none;
+    }
+    .flash-box {
+      @include char-set(1rem, #ffffff);
+      font-weight: lighter;
+      text-align: center;
+      width: 100vw;
+    }
   }
 }
 

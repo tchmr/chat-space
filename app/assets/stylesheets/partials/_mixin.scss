@@ -1,0 +1,9 @@
+@mixin height-width-set($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin char-set($font-size, $color) {
+  font-size: $font-size;
+  color: $color;
+}

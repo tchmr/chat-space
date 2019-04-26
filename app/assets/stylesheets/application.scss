@@ -1,1 +1,16 @@
-@import "./reset";
+@import "font-awesome";
+@import "./partials/*";
+@import "./messages";
+
+* {
+  box-sizing: border-box;
+  a {
+    text-decoration: none;
+  }
+  .flash-box {
+    @include char-set(1rem, #ffffff);
+    font-weight: lighter;
+    text-align: center;
+    width: 100vw;
+  }
+}

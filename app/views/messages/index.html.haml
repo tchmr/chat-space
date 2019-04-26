@@ -1,0 +1,60 @@
+.flash-box
+.wrapper
+  .chat-side
+    .side-header
+      %p.side-header__user-name sample_user_name
+      %ul.user-menu
+        %li.user-menu__new-group
+          = link_to "#" do
+            = fa_icon "edit"
+        %li.user-menu__edit-user
+          = link_to "#" do
+            = fa_icon "cog"
+    .groups
+      = link_to "#" do
+        .group
+          %p.group__group-name sample_group1
+          %p.group__latest-message sample_message1
+        .group
+          %p.group__group-name sample_group2
+          %p.group__latest-message sample_message2
+        .group
+          %p.group__group-name グループ３
+          %p.group__latest-message テストメッセージ３
+
+  .chat-main
+    .main-header
+      %div(class="current-group" data-group-id="1")
+        %h2.current-group__name test
+        %ul.member-list
+          Member：
+          %li.member-list__member test0422
+          %li.member-list__member test2
+          %li.member-list__member test3
+      = link_to "#" do
+        .main-header__edit-btn Edit
+    .messages
+      %div(class="message" data-message-id="1")
+        .upper-info
+          %p.upper-info__user test0422
+          %p.upper-info__date 2019/4/2(Wed) 20:19:11
+        %p.message__text test
+      %div(class="message" data-message-id="2")
+        .upper-info
+          %p.upper-info__user test2
+          %p.upper-info__date 2019/4/24(Wed) 20:20:11
+        %p.message__text sample_message2
+      %div(class="message" data-message-id="3")
+        .upper-info
+          %p.upper-info__user test3
+          %p.upper-info__date 2019/4/24(Wed) 20:21:11
+        %p.message__text sample_message3
+    .form
+      .new-message#new-message
+        .input-box
+          %input(placeholder="type a message" class="input-box__text" type="text")
+          %label(class="image-label" for="message-image")
+            = fa_icon "image"
+            %input(class="image-label__input" type="file" name="message[image]" id="message-image")
+
+        %input(type="submit" name="commit" value="Send" class="new-message__submit-btn" data-disable-with="Send")

@@ -10,7 +10,7 @@ html {
       text-decoration: none;
     }
     .flash-box {
-      @include char-set(1rem, #ffffff);
+      @include char-set(1rem, $white);
       font-weight: lighter;
       text-align: center;
       width: 100vw;
@@ -26,7 +26,7 @@ html {
     color: $chat-side-color;
     .side-header {
       @include height-width-set(100px, 100%);
-      background-color: #253141;
+      background-color: $side-blue-dark;
       padding: 0 20px;
       display: flex;
       justify-content: space-between;
@@ -49,7 +49,7 @@ html {
     }
     .groups {
       @include height-width-set(calc(100% - 100px), 100%);
-      background-color: #2f3e51;
+      background-color: $side-blue-light;
       padding: 20px 20px;
       .group {
         padding-bottom: 40px;
@@ -69,7 +69,7 @@ html {
   .chat-main {
     @include height-width-set(100%, calc(100% - 300px));
     .main-header {
-      background-color: #ffffff;
+      background-color: $white;
       height: 100px;
       padding: 0 40px;
       border-bottom: solid 1px #eeeeee;
@@ -149,7 +149,7 @@ html {
         }
         &__submit-btn {
           @include height-width-set(50px, 100px);
-          color: #ffffff;
+          color: $white;
           background-color: $btn-color;
           margin-left: 15px;
           padding: 0 30px;

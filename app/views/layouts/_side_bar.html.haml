@@ -16,5 +16,4 @@
           %p.group__group-name
             = group.name
           %p.group__latest-message
-            latest_message
-            -#  - current_user.groups.each do |group|
+            = group.show_latest_message

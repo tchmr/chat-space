@@ -49,6 +49,7 @@ html {
     }
     .groups {
       @include height-width-set(calc(100% - 100px), 100%);
+      overflow: scroll;
       background-color: $side-blue-light;
       padding: 20px 20px;
       .group {
@@ -100,6 +101,7 @@ html {
     }
     .messages {
       @include height-width-set(calc(100% - 190px), calc(100vw - 300px));
+      overflow: scroll;
       background-color: #fafafa;
       padding: 46px 40px;
       .message {
@@ -119,6 +121,10 @@ html {
         &__text {
           @include char-set(14px, $message-color);
           margin-bottom: 10px;
+          &__image {
+            height: 300px;
+            width: 300px;
+          }
         }
       }
     }
@@ -126,12 +132,12 @@ html {
       height: 90px;
       background-color: #dddddd;
       padding:20px 40px;
-      .new-message {
+      .new_message {
         display: flex;
         .input-box {
           width: 100%;
           position: relative;
-          &__text {
+          &__message {
             @include height-width-set(50px, 100%);
             border: none;
             padding-left: 10px;
@@ -143,18 +149,19 @@ html {
             font-size: 1.3rem;
             cursor: pointer;
           }
-          .image-label__input {
+          .hidden {
             display: none;
           }
         }
-        &__submit-btn {
+        &__submit {
           @include height-width-set(50px, 100px);
           color: $white;
           background-color: $btn-color;
           margin-left: 15px;
           padding: 0 30px;
-        }
-      }
-    }
+         }
+       }
+     }
   }
 }
+

@@ -4,37 +4,24 @@
   .chat-main
     .main-header
       %div(class="current-group" data-group-id="1")
-        %h2.current-group__name test
+        %h2.current-group__name
+          = @group.name
         %ul.member-list
           Member：
-          %li.member-list__member test0422
-          %li.member-list__member test2
-          %li.member-list__member test3
+          - @group.users.each do |user|
+            %li.member-list__member
+              = user.name
       - if params[:group_id]
         = link_to edit_group_path(params[:group_id]) do
           .main-header__edit-btn Edit
     .messages
-      %div(class="message" data-message-id="1")
-        .upper-info
-          %p.upper-info__user test0422
-          %p.upper-info__date 2019/4/2(Wed) 20:19:11
-        %p.message__text test
-      %div(class="message" data-message-id="2")
-        .upper-info
-          %p.upper-info__user test2
-          %p.upper-info__date 2019/4/24(Wed) 20:20:11
-        %p.message__text sample_message2
-      %div(class="message" data-message-id="3")
-        .upper-info
-          %p.upper-info__user test3
-          %p.upper-info__date 2019/4/24(Wed) 20:21:11
-        %p.message__text sample_message3
+      = render @messages
     .form
-      .new-message#new-message
+      = form_for [@group, @message] do |f|
         .input-box
-          %input(placeholder="type a message" class="input-box__text" type="text")
-          %label(class="image-label" for="message-image")
-            = fa_icon "image"
-            %input(class="image-label__input" type="file" name="message[image]" id="message-image")
-
-        %input(type="submit" name="commit" value="Send" class="new-message__submit-btn" data-disable-with="Send")
+          = f.text_field :body, class: 'input-box__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'fa-image icon'
+              = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'new_message__submit'

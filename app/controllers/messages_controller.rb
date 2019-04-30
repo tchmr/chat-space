@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
+  before_action :get_current_user_groups, only: :index
+
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   def create

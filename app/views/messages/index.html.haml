@@ -1,5 +1,5 @@
 .wrapper
-  = render '/layouts/side_bar'
+  = render partial: '/layouts/side_bar', locals: { groups: @groups }
 
   .chat-main
     .main-header

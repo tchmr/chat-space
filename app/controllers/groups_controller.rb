@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit]
+  before_action :get_current_user_groups, only: :index
 
   def index
   end

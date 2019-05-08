@@ -31,11 +31,10 @@ $(function() {
 
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
-    var url = window.location.href
     var formData = new FormData(this);
 
     $.ajax({
-      url: url,
+      url: window.location.href,
       type: 'POST',
       data: formData,
       dataType: 'json',
@@ -47,7 +46,7 @@ $(function() {
       $('.input-box__message').val('');
       $('#message_image').val('');
       activateSubmitBtn();
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      messages.animate({scrollTop: messages[0].scrollHeight}, 'fast');
     })
     .fail(function() {
       alert('メッセージを入力してください');

@@ -2,10 +2,7 @@ $(function() {
   var messages = $('.messages');
 
   function postMsg(message) {
-    img_tag = `<img src="${message.image.url}" class="message__text__image">`;
-    if(message.image.url === null) {
-      img_tag = ``;
-    }
+    message.image.url === null ? img_tag = `` : img_tag = `<img src="${message.image.url}" class="message__text__image">`;
 
     var html =
               `<div class="message">
@@ -43,8 +40,7 @@ $(function() {
     })
     .done(function(data) {
       postMsg(data);
-      $('.input-box__message').val('');
-      $('#message_image').val('');
+      $('#new_message')[0].reset();
       activateSubmitBtn();
       messages.animate({scrollTop: messages[0].scrollHeight}, 'fast');
     })

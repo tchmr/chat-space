@@ -19,8 +19,8 @@ $(function() {
                 </div>
                 <p class="message__text">
                   ${message.body}
-                  ${img_tag}
                 </p>
+                ${img_tag}
               </div>`
     messages.append(html);
   }
@@ -50,7 +50,7 @@ $(function() {
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
     .fail(function() {
-      alert('error');
+      alert('メッセージを入力してください');
       activateSubmitBtn();
     })
   });

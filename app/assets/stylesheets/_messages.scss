@@ -122,8 +122,8 @@ html {
           @include char-set(14px, $message-color);
           margin-bottom: 10px;
           &__image {
-            height: 300px;
-            width: 300px;
+            height: auto;
+            width: 200px;
           }
         }
       }

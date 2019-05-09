@@ -8,7 +8,7 @@ $(function() {
               `<div class="message" data-message-id="${message.id}">
                 <div class="upper-info">
                   <p class="upper-info__user">
-                    ${message.name}
+                    ${message.user_name}
                   </p>
                   <p class="upper-info__date">
                     ${message.time}

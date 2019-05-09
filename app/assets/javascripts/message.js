@@ -1,14 +1,14 @@
 $(function() {
-  var messages = $('.messages');
+  var $messages = $('.messages');
 
-  function postMsg(message) {
+  function buildMessageHTML(message) {
     message.image.url === null ? img_tag = `` : img_tag = `<img src="${message.image.url}" class="message__text__image">`;
 
     var html =
-              `<div class="message">
+              `<div class="message" data-message-id="${message.id}">
                 <div class="upper-info">
                   <p class="upper-info__user">
-                    ${message.name}
+                    ${message.user_name}
                   </p>
                   <p class="upper-info__date">
                     ${message.time}
@@ -19,12 +19,21 @@ $(function() {
                 </p>
                 ${img_tag}
               </div>`
-    messages.append(html);
+    return html;
+  }
+
+  function formReset() {
+    $('#new_message')[0].reset();
+  }
+
+  function scrollView() {
+    $messages.animate({scrollTop: $messages[0].scrollHeight}, 'fast');
   }
 
   function activateSubmitBtn() {
     $('.new_message__submit').prop('disabled', false);
   }
+
 
   $('#new_message').on('submit', function(e) {
     e.preventDefault();
@@ -38,15 +47,39 @@ $(function() {
       processData: false,
       contentType: false
     })
-    .done(function(data) {
-      postMsg(data);
-      $('#new_message')[0].reset();
+    .done(function(message) {
+      $messages.append(buildMessageHTML(message));
+      formReset();
+      scrollView();
       activateSubmitBtn();
-      messages.animate({scrollTop: messages[0].scrollHeight}, 'fast');
     })
     .fail(function() {
       alert('メッセージを入力してください');
       activateSubmitBtn();
     })
   });
+
+  var reloadMessages = function() {
+    last_message_id = $('.message').last().attr('data-message-id');
+    api_url = window.location.href + '/../api/messages';
+    $.ajax({
+      url: api_url,
+      type: 'GET',
+      dataType: 'json',
+      data: { id: last_message_id }
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      messages.forEach(function(message) {
+        insertHTML += buildMessageHTML(message);
+      });
+      $messages.append(insertHTML);
+      scrollView();
+    })
+    .fail(function() {
+      alert('自動更新に失敗しました');
+    });
+  };
+
+  setInterval(reloadMessages, 5000);
 });

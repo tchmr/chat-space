@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:edit]
+  before_action :set_group, only: [:edit, :update]
   before_action :get_current_user_groups, only: :index
 
   def index
@@ -20,7 +20,6 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.find(params[:id])
     @group.name = group_params[:name]
     @group.user_ids = group_params[:user_ids]
     if @group.save

@@ -17,6 +17,3 @@
 .byebug_history
 
 # Ignore uploaded pictures.
-public/uploads/*
-
-public/*

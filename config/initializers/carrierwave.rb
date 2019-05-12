@@ -14,4 +14,7 @@ CarrierWave.configure do |config|
 
   config.fog_directory  = 'chat-space-up-image'
   config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/chat-space-up-image'
+
+  # config.fog_public     = false
+  # config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
 end
